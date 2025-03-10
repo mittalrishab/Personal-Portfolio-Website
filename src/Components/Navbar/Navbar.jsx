@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav className='flex flex-wrap justify-between md:items-center text-white px-6 pt-6 md:px-20 relative'>
       <span className='text-4xl font-bold tracking-wide'>Portfolio</span>
-      
+
       {/* Mobile Menu Button */}
       <button
         className='md:hidden absolute right-6 top-6 z-50 transition-all'
@@ -31,10 +31,19 @@ const Navbar = () => {
         rounded-xl md:bg-transparent
         text-center
       `}>
-        <a href="#About" className='block py-2 hover:text-gray-300 text-xl transition-colors'><li>About</li></a>
-        <a href="#Experience" className='block py-2 hover:text-gray-300 text-xl transition-colors'><li>Experience</li></a>
-        <a href="#Projects" className='block py-2 hover:text-gray-300 text-xl transition-colors'><li>Projects</li></a>
-        <a href="#Footer" className='block py-2 hover:text-gray-300 text-xl transition-colors'><li>Contact</li></a>
+        <a href="#About" className="relative block py-2 text-xl transition-colors hover:text-gray-300 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+          <li>About</li>
+        </a>
+        <a href="#Experience" className="relative block py-2 text-xl transition-colors hover:text-gray-300 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+          <li>Experience</li>
+        </a>
+        <a href="#Projects" className="relative block py-2 text-xl transition-colors hover:text-gray-300 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+          <li>Projects</li>
+        </a>
+        <a href="#Footer" className="relative block py-2 text-xl transition-colors hover:text-gray-300 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+          <li>Contact</li>
+        </a>
+
       </ul>
     </nav>
   )

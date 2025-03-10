@@ -10,12 +10,12 @@ const Home = () => {
             <p className='text-sm md:text-2xl tracking-tight'>I am a passionate Web Developer</p>
             <div className='mt-5 md:mt-10 flex justify-center lg:justify-start'>
                 <button className='text-white py-2 px-3 text-sm md:text-lg md:py-2 md:px-4 hover:opacity-85 duration-300 hover:scale-105 font-semibold rounded-3xl bg-[#465697]'>
-                    Contact Me
+                    <a href="#Footer">Contact Me</a>
                 </button>
             </div>
         </div>
         <div className='mt-15 md:mt-10 lg:mt-0'>
-            <img className="max-w-full w-[300px] md:w-[330px] border-blue-[#171D32] border-[5px] rounded-full lg:rounded-none" src={avatarImg} alt="Avatar" />
+            <img className="max-w-full w-[300px] md:w-[330px] border-[#121852] border-[5px] rounded-full lg:rounded-none" src={avatarImg} alt="Avatar" />
         </div>
     </div>
   )
