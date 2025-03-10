@@ -1,24 +1,25 @@
 import React from 'react';
 import bannerImg from '../../assets/bannerImg.png';
 import bmiImg from "../../assets/bmiImg.png";
+import ToDoApp from "../../assets/ToDoApp.png"
 
 const Projects = () => {
   const projects = [
     {
       title: "BMI Calculator",
       description: "A simple BMI calculator built with React to determine Body Mass Index based on user input.",
-      tags: ["React", "JavaScript", "HTML", "CSS"],
+      tags: ["React"],
       demoLink: "https://mittalrishab.github.io/bmi_calculator/", // Replace with actual demo link
       codeLink: "https://github.com/mittalrishab/bmi_calculator", // Replace with actual GitHub repo link
       image: bmiImg, // Ensure bmiImg is correctly imported or defined
-    },    
+    },
     {
-      title: "AI-Powered Blog Platform",
-      description: "Full-stack blogging platform with AI content suggestions",
-      tags: ["React", "Node.js", "MongoDB", "TensorFlow"],
-      demoLink: "#",
-      codeLink: "#",
-      image: bannerImg,
+      title: "To Do App",
+      description: "A simple and responsive to-do list app built with HTML, CSS, and JavaScript for your daily tasks.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "https://rishabhtodoapp.netlify.app/",
+      codeLink: "https://github.com/mittalrishab/todolist-html-css-js-",
+      image: ToDoApp,
     },
     {
       title: "AI-Powered Blog Platform",
@@ -55,8 +56,9 @@ const Projects = () => {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform group-hover:scale-105 object-center"
               />
+
               <div className="absolute inset-0 bg-gradient-to-t from-[#0c0e19] via-transparent to-transparent" />
             </div>
 
@@ -68,7 +70,7 @@ const Projects = () => {
 
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag, i) => (
-                  <span
+                  <span 
                     key={i}
                     className="px-3 py-1 text-sm bg-[#465697]/20 rounded-full text-[#465697]"
                   >
