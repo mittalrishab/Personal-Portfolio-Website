@@ -2,6 +2,7 @@ import React from 'react';
 import bannerImg from '../../assets/bannerImg.png';
 import bmiImg from "../../assets/bmiImg.png";
 import ToDoApp from "../../assets/ToDoApp.png"
+import utilityWebSuite from "../../assets/utilityWebSuite.png"
 
 const Projects = () => {
   const projects = [
@@ -22,21 +23,13 @@ const Projects = () => {
       image: ToDoApp,
     },
     {
-      title: "AI-Powered Blog Platform",
-      description: "Full-stack blogging platform with AI content suggestions",
-      tags: ["React", "Node.js", "MongoDB", "TensorFlow"],
-      demoLink: "#",
-      codeLink: "#",
-      image: bannerImg,
-    },
-    {
-      title: "AI-Powered Blog Platform",
-      description: "Full-stack blogging platform with AI content suggestions",
-      tags: ["React", "Node.js", "MongoDB", "TensorFlow"],
-      demoLink: "#",
-      codeLink: "#",
-      image: bannerImg,
-    },
+      title: "Utility Web Suite",
+      description: "A compact site combining a calculator, clock, stopwatch, weather app, and quote generator in one place.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "https://basicappshtmlcssjs.netlify.app/",
+      codeLink: "https://github.com/mittalrishab/basic_app",
+      image: utilityWebSuite,
+    }
     // Add other projects
   ];
 
