@@ -1,23 +1,56 @@
 import React from 'react'
 import avatarImg from '../../assets/avatarImage.png'
 import TextChange from '../TextChange'
+// import your social icons here, e.g. react-icons
 
 const Home = () => {
   return (
-    <div className='text-white flex flex-col w-full justify-around items-center p-10 md:p-20 lg:flex-row lg:justify-around md:mb-[100px]'>
-        <div className='lg:w-65/100 md:pt-10 min-w-[270px] text-center lg:text-left'>
-            <h1 className='text-3xl md:text-6xl font-bold flex leading-normal tracking-tighter'><span>Hi, I'm&nbsp;</span><span><TextChange/></span></h1>
-            <p className='text-sm md:text-2xl tracking-tight'>I am a passionate Web Developer</p>
-            <div className='mt-5 md:mt-10 flex justify-center lg:justify-start'>
-                <button className='text-white py-2 px-3 text-sm md:text-lg md:py-2 md:px-4 hover:opacity-85 duration-300 hover:scale-105 font-semibold rounded-3xl bg-[#465697]'>
-                    <a href="#Footer">Contact Me</a>
-                </button>
-            </div>
+    <section
+      className="w-full min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-10 px-6 py-16 md:px-20 bg-gradient-to-br from-[#1a2238] to-[#465697]"
+      id="home"
+    >
+      {/* Left: Text Content */}
+      <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
+        <h2 className="text-xl md:text-2xl font-medium text-[#a3aed6] mb-2 tracking-wide">
+          Welcome to my portfolio!
+        </h2>
+        <h1 className="text-3xl md:text-6xl font-bold flex flex-wrap items-center leading-tight tracking-tighter mb-4">
+          <span>Hi, I'm&nbsp;</span>
+          <span className="text-[#ffd700]">
+            <TextChange />
+          </span>
+        </h1>
+        <p className="text-base md:text-2xl text-[#e0e6f7] mb-6 max-w-xl">
+          I’m a passionate Web Developer crafting modern, responsive, and accessible web experiences. I love turning ideas into reality using code and design.
+        </p>
+        <div className="flex gap-4 mb-6">
+          {/* Social Links (customize as needed) */}
+          {/* <a href="https://github.com/yourusername" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <GitHubIcon className="w-7 h-7 hover:text-[#ffd700] transition" />
+          </a>
+          <a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <LinkedInIcon className="w-7 h-7 hover:text-[#ffd700] transition" />
+          </a> */}
         </div>
-        <div className='mt-15 md:mt-10 lg:mt-0'>
-            <img className="max-w-full w-[300px] md:w-[330px] border-[#121852] border-[5px] rounded-full lg:rounded-none" src={avatarImg} alt="Avatar" />
-        </div>
-    </div>
+        <a href="#Footer">
+          <button
+            className="bg-[#465697] hover:bg-[#ffd700] hover:text-[#1a2238] transition-all duration-300 text-white py-3 px-8 text-lg font-semibold rounded-full shadow-lg hover:scale-105 focus:outline-none"
+            aria-label="Contact Me"
+          >
+            Contact Me
+          </button>
+        </a>
+      </div>
+
+      {/* Right: Avatar */}
+      <div className="flex-1 flex justify-center items-center">
+        <img
+          src={avatarImg}
+          alt="Portrait of [Your Name], Web Developer"
+          className="w-60 h-60 md:w-80 md:h-80 rounded-full shadow-2xl border-4 border-[#465697] object-cover bg-white hover:scale-105 transition"
+        />
+      </div>
+    </section>
   )
 }
 
