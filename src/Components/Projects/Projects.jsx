@@ -3,10 +3,26 @@ import bannerImg from '../../assets/bannerImg.png';
 import bmiImg from "../../assets/bmiImg.png";
 import ToDoApp from "../../assets/ToDoApp.png"
 import utilityWebSuite from "../../assets/utilityWebSuite.png"
+import roadmapgen from "../../assets/roadmapgen.png"
+import snakegame from "../../assets/snakegame.jpg"
 
 const Projects = () => {
   const projects = [
     {
+      title: "Gesture & Voice Controlled Snake Game",
+      description: "A classic Snake game reimagined with voice commands and hand gesture controls using JavaScript.",
+      tags: ["HTML", "CSS", "JavaScript","Scribbler.Live"],
+      demoLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/scribbler-hackathon-project/final_submission_notepad.jsnb", // Hosted playable version
+      codeLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/scribbler-hackathon-project/final_submission_notepad.jsnb", // GitHub repo
+      image: snakegame // Replace this with the actual imported image used for this project
+    }, {
+      title: "Learning Roadmap Generator",
+      description: "Converts syllabus PDFs into interactive learning planners.",
+      tags: ["HTML", "CSS", "JavaScript", "PDF.js", "TailwindCSS","Scribbler.Live"],
+      demoLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/summer-scribbler-hackathon/MapItFlow.jsnb", // Replace with actual demo link
+      codeLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/summer-scribbler-hackathon/MapItFlow.jsnb", // Replace with actual GitHub repo link
+      image: roadmapgen, // Ensure bmiImg is correctly imported or defined
+    }, {
       title: "BMI Calculator",
       description: "A simple BMI calculator built with React to determine Body Mass Index based on user input.",
       tags: ["React"],
@@ -63,7 +79,7 @@ const Projects = () => {
 
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag, i) => (
-                  <span 
+                  <span
                     key={i}
                     className="px-3 py-1 text-sm bg-[#465697]/20 rounded-full text-[#465697]"
                   >

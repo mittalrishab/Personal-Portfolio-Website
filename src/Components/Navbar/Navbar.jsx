@@ -45,7 +45,8 @@ const Navbar = () => {
     { href: "#About", label: "About", icon: "👋" },
     { href: "#Experience", label: "Experience", icon: "💼" },
     { href: "#Projects", label: "Projects", icon: "🚀" },
-    { href: "#Footer", label: "Contact", icon: "📬" }
+    { href: "#Footer", label: "Contact", icon: "📬" },
+    { href: "#certificates", label: "Certificates", icon: "📜" }
   ];
 
   return (

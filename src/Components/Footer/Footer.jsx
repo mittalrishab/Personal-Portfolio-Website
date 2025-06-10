@@ -4,6 +4,8 @@ import { MdOutlineEmail, MdCode } from 'react-icons/md';
 import { CiLinkedin } from 'react-icons/ci';
 import { FaGithub } from 'react-icons/fa6';
 import { SiGeeksforgeeks } from 'react-icons/si';
+import MonkeytypeIcon from '../MonkeytypeIcon.jsx';
+
 
 const Footer = () => {
   const socialLinks = [
@@ -31,11 +33,16 @@ const Footer = () => {
       icon: <SiGeeksforgeeks size={28} />,
       text: 'GeeksforGeeks',
       href: 'https://www.geeksforgeeks.org/user/_rishabh_mittal/'
+    },
+    {
+      icon: <MonkeytypeIcon size={28} />,
+      text: 'Monkeytype',
+      href: 'https://monkeytype.com/profile/rishabh_coding'
     }
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-[#465697] to-[#374785] py-12" id="footer">
+    <footer className="bg-gradient-to-r from-[#465697] to-[#374785] py-12" id="Footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
