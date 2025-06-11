@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { RiMenu2Line, RiCloseLine, RiExternalLinkLine } from "@remixicon/react"
+import React, { useState, useEffect } from 'react';
+import { RiMenu2Line, RiCloseLine, RiExternalLinkLine } from "@remixicon/react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
-  // Scroll detection for dynamic navbar styling
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setScrolled(scrollPosition > 50);
-      
-      // Active section detection
-      const sections = ['About', 'Experience', 'Projects', 'Footer'];
+
+      const sections = ['About', 'education', 'certificates', 'Projects', 'Footer'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -29,7 +27,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isOpen && !event.target.closest('nav')) {
@@ -43,10 +40,10 @@ const Navbar = () => {
 
   const navigationItems = [
     { href: "#About", label: "About", icon: "👋" },
-    { href: "#Experience", label: "Experience", icon: "💼" },
+    { href: "#education", label: "Education", icon: "🎓" },
+    { href: "#certificates", label: "Certificates", icon: "📜" },
     { href: "#Projects", label: "Projects", icon: "🚀" },
     { href: "#Footer", label: "Contact", icon: "📬" },
-    { href: "#certificates", label: "Certificates", icon: "📜" }
   ];
 
   return (
@@ -59,7 +56,7 @@ const Navbar = () => {
       flex flex-wrap justify-between md:items-center text-white px-6 py-4 md:px-20
     `}>
       
-      {/* Enhanced Logo with Gradient Effect */}
+      {/* Logo */}
       <div className="flex items-center group">
         <span className={`
           text-4xl font-bold tracking-wide transition-all duration-300
@@ -72,7 +69,7 @@ const Navbar = () => {
         <div className="ml-2 w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
       </div>
 
-      {/* Enhanced Mobile Menu Button */}
+      {/* Mobile Menu Button */}
       <button
         className={`
           md:hidden relative right-0 top-0 z-50 p-2 rounded-xl transition-all duration-300
@@ -98,7 +95,7 @@ const Navbar = () => {
         </div>
       </button>
 
-      {/* Enhanced Navigation Links */}
+      {/* Navigation Links */}
       <div className={`
         md:flex md:items-center
         absolute md:static top-full left-0 right-0 mt-2 md:mt-0
@@ -127,8 +124,6 @@ const Navbar = () => {
                     ? 'text-blue-400 bg-white/10 md:bg-transparent' 
                     : 'text-white hover:text-blue-300'
                   }
-                  
-                  /* Enhanced Underline Animation */
                   after:absolute after:left-4 md:after:left-0 after:bottom-1 md:after:bottom-0 
                   after:h-[2px] after:bg-gradient-to-r after:from-blue-400 after:to-purple-500
                   after:transition-all after:duration-500 after:ease-out
@@ -136,14 +131,10 @@ const Navbar = () => {
                     ? 'after:w-[calc(100%-2rem)] md:after:w-full after:opacity-100'
                     : 'after:w-0 hover:after:w-[calc(100%-2rem)] md:hover:after:w-full after:opacity-0 hover:after:opacity-100'
                   }
-                  
-                  /* Glow Effect on Hover */
                   hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]
                 `}
                 onClick={() => setIsOpen(false)}
-                style={{
-                  animationDelay: `${index * 100}ms`
-                }}
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <span className="text-xl md:hidden group-hover:scale-125 transition-transform duration-300">
                   {item.icon}
@@ -160,8 +151,8 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-          
-          {/* CTA Button in Mobile Menu */}
+
+          {/* CTA Button for mobile */}
           <li className="md:hidden mt-4 pt-4 border-t border-white/20">
             <a 
               href="#Footer"
@@ -175,10 +166,10 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Decorative Elements */}
+      {/* Bottom decorative line */}
       <div className="hidden md:block absolute -bottom-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

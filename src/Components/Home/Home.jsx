@@ -1,7 +1,6 @@
 import React from 'react'
 import avatarImg from '../../assets/avatarImage.png'
 import TextChange from '../TextChange'
-// import your social icons here, e.g. react-icons
 
 const Home = () => {
   return (
@@ -15,13 +14,13 @@ const Home = () => {
           Welcome to my portfolio!
         </h2>
         <h1 className="text-3xl md:text-6xl font-bold flex flex-wrap items-center leading-tight tracking-tighter mb-4">
-          <span>Hi, I'm&nbsp;</span>
+          <span>Hi, I&apos;m&nbsp;</span>
           <span className="text-[#ffd700]">
             <TextChange />
           </span>
         </h1>
         <p className="text-base md:text-2xl text-[#e0e6f7] mb-6 max-w-xl">
-          I’m a passionate Web Developer crafting modern, responsive, and accessible web experiences. I love turning ideas into reality using code and design.
+          I&apos;m a passionate Web Developer crafting modern, responsive, and accessible web experiences. I love turning ideas into reality using code and design.
         </p>
         <div className="flex gap-4 mb-6">
           {/* Social Links (customize as needed) */}
@@ -32,14 +31,24 @@ const Home = () => {
             <LinkedInIcon className="w-7 h-7 hover:text-[#ffd700] transition" />
           </a> */}
         </div>
-        <a href="#Footer">
-          <button
-            className="bg-[#465697] hover:bg-[#ffd700] hover:text-[#1a2238] transition-all duration-300 text-white py-3 px-8 text-lg font-semibold rounded-full shadow-lg hover:scale-105 focus:outline-none"
-            aria-label="Contact Me"
-          >
-            Contact Me
-          </button>
-        </a>
+        <div className="flex gap-4">
+          <a href="#Footer">
+            <button
+              className="bg-[#465697] hover:bg-[#ffd700] hover:text-[#1a2238] transition-all duration-300 text-white py-3 px-8 text-lg font-semibold rounded-full shadow-lg hover:scale-105 focus:outline-none"
+              aria-label="Contact Me"
+            >
+              Contact Me
+            </button>
+          </a>
+          <a href="/path/to/your-cv.pdf" download>
+            <button
+              className="bg-[#ffd700] hover:bg-[#465697] hover:text-white transition-all duration-300 text-[#1a2238] py-3 px-8 text-lg font-semibold rounded-full shadow-lg hover:scale-105 focus:outline-none"
+              aria-label="Download CV"
+            >
+              Download CV ⬇️
+            </button>
+          </a>
+        </div>
       </div>
 
       {/* Right: Avatar */}
