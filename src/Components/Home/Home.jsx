@@ -11,7 +11,7 @@ const Home = () => {
       {/* Left: Text Content */}
       <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
         <h2 className="text-xl md:text-2xl font-medium text-[#a3aed6] mb-2 tracking-wide">
-          Welcome to my portfolio!
+          Welcome to my portfolio!😎
         </h2>
         <h1 className="text-3xl md:text-6xl font-bold flex flex-wrap items-center leading-tight tracking-tighter mb-4">
           <span>Hi, I&apos;m&nbsp;</span>
@@ -37,7 +37,7 @@ const Home = () => {
               className="bg-[#465697] hover:bg-[#ffd700] hover:text-[#1a2238] transition-all duration-300 text-white py-3 px-8 text-lg font-semibold rounded-full shadow-lg hover:scale-105 focus:outline-none"
               aria-label="Contact Me"
             >
-              Contact Me
+              Contact Me ☎️
             </button>
           </a>
           <a
@@ -60,7 +60,7 @@ const Home = () => {
       <div className="flex-1 flex justify-center items-center">
         <img
           src={avatarImg}
-          alt="Portrait of [Your Name], Web Developer"
+          alt="Portrait of Rishabh Mittal, Web Developer"
           className="w-60 h-60 md:w-80 md:h-80 rounded-full shadow-2xl border-4 border-[#465697] object-cover bg-white hover:scale-105 transition"
         />
       </div>

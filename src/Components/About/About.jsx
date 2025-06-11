@@ -69,7 +69,7 @@ const About = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <h2 className="text-4xl font-bold text-white mb-6 text-center lg:text-left">
-            My <span className="text-purple-400">Technical Expertise</span>
+            My <span className="text-purple-400">Technical Expertise 👨‍💻</span>
           </h2>
           <p className="text-gray-300 mb-8 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
             As a passionate full-stack developer, I create robust, scalable web applications with intuitive user experiences. Here's my technical toolkit:

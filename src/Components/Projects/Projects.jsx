@@ -12,23 +12,23 @@ const Projects = () => {
       title: "Gesture & Voice Controlled Snake Game",
       description: "A classic Snake game reimagined with voice commands and hand gesture controls using JavaScript.",
       tags: ["HTML", "CSS", "JavaScript","Scribbler.Live"],
-      demoLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/scribbler-hackathon-project/final_submission_notepad.jsnb", // Hosted playable version
-      codeLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/scribbler-hackathon-project/final_submission_notepad.jsnb", // GitHub repo
-      image: snakegame // Replace this with the actual imported image used for this project
+      demoLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/scribbler-hackathon-project/final_submission_notepad.jsnb", 
+      codeLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/scribbler-hackathon-project/final_submission_notepad.jsnb", 
+      image: snakegame 
     }, {
       title: "Learning Roadmap Generator",
       description: "Converts syllabus PDFs into interactive learning planners.",
       tags: ["HTML", "CSS", "JavaScript", "PDF.js", "TailwindCSS","Scribbler.Live"],
-      demoLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/summer-scribbler-hackathon/MapItFlow.jsnb", // Replace with actual demo link
-      codeLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/summer-scribbler-hackathon/MapItFlow.jsnb", // Replace with actual GitHub repo link
-      image: roadmapgen, // Ensure bmiImg is correctly imported or defined
+      demoLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/summer-scribbler-hackathon/MapItFlow.jsnb", 
+      codeLink: "https://app.scribbler.live/?jsnb=github:parthsidpara/summer-scribbler-hackathon/MapItFlow.jsnb", 
+      image: roadmapgen,
     }, {
       title: "BMI Calculator",
       description: "A simple BMI calculator built with React to determine Body Mass Index based on user input.",
       tags: ["React"],
-      demoLink: "https://mittalrishab.github.io/bmi_calculator/", // Replace with actual demo link
-      codeLink: "https://github.com/mittalrishab/bmi_calculator", // Replace with actual GitHub repo link
-      image: bmiImg, // Ensure bmiImg is correctly imported or defined
+      demoLink: "https://mittalrishab.github.io/bmi_calculator/", 
+      codeLink: "https://github.com/mittalrishab/bmi_calculator", 
+      image: bmiImg,
     },
     {
       title: "To Do App",
@@ -46,7 +46,6 @@ const Projects = () => {
       codeLink: "https://github.com/mittalrishab/basic_app",
       image: utilityWebSuite,
     }
-    // Add other projects
   ];
 
   return (
@@ -59,29 +58,49 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="group relative bg-[#0c0e19] rounded-2xl overflow-hidden transition-transform hover:scale-[1.02]"
+            className="group relative bg-[#0c0e19] rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-teal-500/20"
+            style={{
+              animation: `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`,
+              opacity: 0,
+              transform: 'translateY(20px)'
+            }}
           >
             <div className="relative h-60 overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform group-hover:scale-105 object-center"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 object-center"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#0c0e19] via-transparent to-transparent" />
+              
+              {/* Floating tags animation */}
+              <div className="absolute top-4 right-4 flex flex-wrap gap-2">
+                {project.tags.slice(0, 2).map((tag, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-xs bg-[#465697]/80 backdrop-blur-sm rounded-full text-white transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0"
+                    style={{ transitionDelay: `${i * 100}ms` }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
 
             <div className="p-6">
-              <h3 className="text-2xl font-bold text-white mb-3">
+              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-teal-300 transition-colors duration-300">
                 {project.title}
               </h3>
-              <p className="text-gray-300 mb-4">{project.description}</p>
+              <p className="text-gray-300 mb-4 transition-colors group-hover:text-gray-200 duration-300">
+                {project.description}
+              </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 text-sm bg-[#465697]/20 rounded-full text-[#465697]"
+                    className="px-3 py-1 text-sm bg-[#465697]/20 rounded-full text-[#465697] transition-all duration-300 hover:bg-[#465697]/40 hover:text-white hover:-translate-y-0.5"
                   >
                     {tag}
                   </span>
@@ -90,18 +109,41 @@ const Projects = () => {
 
               <div className="flex gap-4">
                 <a
-                  href={project.demoLink} target='_blank'
-                  className="flex-1 text-center py-2 px-4 rounded-lg bg-[#465697] hover:bg-[#3a487e] transition-colors"
+                  href={project.demoLink} 
+                  target='_blank'
+                  className="flex-1 text-center py-2 px-4 rounded-lg bg-[#465697] hover:bg-[#3a487e] transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2 group/demo"
                 >
                   Live Demo
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-4 w-4 transition-transform group-hover/demo:translate-x-1"
+                    viewBox="0 0 20 20" 
+                    fill="currentColor"
+                  >
+                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
                 </a>
                 <a
-                  href={project.codeLink} target='_blank'
-                  className="flex-1 text-center py-2 px-4 rounded-lg border border-[#465697] hover:bg-[#465697]/20 transition-colors"
+                  href={project.codeLink} 
+                  target='_blank'
+                  className="flex-1 text-center py-2 px-4 rounded-lg border border-[#465697] hover:bg-[#465697]/20 transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2 group/code"
                 >
                   Source Code
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-4 w-4 transition-transform group-hover/code:translate-x-1"
+                    viewBox="0 0 20 20" 
+                    fill="currentColor"
+                  >
+                    <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
                 </a>
               </div>
+            </div>
+            
+            {/* Hover glow effect */}
+            <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="absolute -inset-1 bg-gradient-to-r from-teal-500/10 to-blue-500/10 rounded-2xl blur-sm"></div>
             </div>
           </div>
         ))}
