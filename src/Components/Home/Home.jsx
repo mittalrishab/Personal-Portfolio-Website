@@ -40,7 +40,11 @@ const Home = () => {
               Contact Me
             </button>
           </a>
-          <a href="/path/to/your-cv.pdf" download>
+          <a
+            href="https://drive.google.com/file/d/1GxoocRUm_jqKzUn7dfozqyI66yO1TQET/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button
               className="bg-[#ffd700] hover:bg-[#465697] hover:text-white transition-all duration-300 text-[#1a2238] py-3 px-8 text-lg font-semibold rounded-full shadow-lg hover:scale-105 focus:outline-none"
               aria-label="Download CV"
@@ -48,6 +52,7 @@ const Home = () => {
               Download CV ⬇️
             </button>
           </a>
+
         </div>
       </div>
 
