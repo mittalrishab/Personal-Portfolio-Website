@@ -43,3 +43,39 @@ a{
     transform: translateY(0);
   }
 }
+.starry-background {
+  position: relative;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #374785 100%);
+  overflow: hidden;
+}
+
+.starry-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+  animation: starryGlow 20s linear infinite;
+}
+
+@keyframes starryGlow {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+.starry-glow {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 2px #a3bffa, 0 0 2px 1px #fff;
+  opacity: 0.8;
+  z-index: 2;
+  animation: glowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from { opacity: 0.6; }
+  to   { opacity: 1; }
+}

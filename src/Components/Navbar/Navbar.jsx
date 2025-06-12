@@ -108,8 +108,8 @@ const Navbar = () => {
         <ul className={`
           flex flex-col md:flex-row md:items-center gap-2 md:gap-8
           mx-4 md:mx-0 p-6 md:p-0
-          bg-black/40 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none
-          border border-white/10 md:border-none rounded-2xl md:rounded-none
+          bg-black/80 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none
+          border border-white/20 md:border-none rounded-2xl md:rounded-none
           shadow-2xl md:shadow-none
         `}>
           {navigationItems.map((item, index) => (
