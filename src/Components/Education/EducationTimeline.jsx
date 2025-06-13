@@ -2,6 +2,7 @@ import React from 'react';
 import { AcademicCapIcon, BuildingLibraryIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 
+// Timeline Entry Component
 const TimelineEntry = ({
   side = 'right',
   icon,
@@ -59,6 +60,7 @@ const TimelineEntry = ({
   </div>
 );
 
+// Education Timeline Component with Animated Background
 const EducationTimeline = () => (
   <motion.section 
     className="relative max-w-4xl mx-auto px-4 py-20 bg-gradient-to-br from-[#232946] via-[#2d3250] to-[#232946] rounded-3xl shadow-2xl mt-16 mb-20 overflow-hidden"
@@ -67,12 +69,52 @@ const EducationTimeline = () => (
     viewport={{ once: true }}
     transition={{ duration: 0.5 }}
   >
-    {/* Glowing vertical line */}
-    <div className="absolute left-1/2 top-35 bottom-10 transform -translate-x-1/2 w-1 bg-gradient-to-b from-yellow-400/60 via-blue-500/60 to-purple-600/60 blur-[2px] z-0 rounded-full" aria-hidden="true"></div>
+    {/* Animated Gradient Background */}
+    <motion.div
+      className="absolute inset-0 z-0"
+      initial={{ backgroundPosition: '0% 50%' }}
+      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+      transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+      style={{
+        background: 'linear-gradient(120deg, #232946 0%, #2d3250 50%, #232946 100%)',
+        backgroundSize: '200% 200%',
+        filter: 'blur(12px)',
+        opacity: 0.7,
+      }}
+      aria-hidden="true"
+    />
+    {/* Floating Glowing Orbs */}
+    {[...Array(4)].map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute rounded-full blur-2xl opacity-60 z-0"
+        style={{
+          width: `${80 + i * 30}px`,
+          height: `${80 + i * 30}px`,
+          top: `${10 + i * 20}%`,
+          left: `${i % 2 === 0 ? '10%' : '70%'}`,
+          background: i % 2 === 0 ? '#facc15' : '#6366f1', // yellow or indigo
+          filter: 'blur(24px)'
+        }}
+        animate={{
+          y: [0, 30, 0],
+          x: [0, i % 2 === 0 ? 20 : -20, 0]
+        }}
+        transition={{
+          duration: 6 + i,
+          repeat: Infinity,
+          repeatType: 'mirror',
+          ease: 'easeInOut'
+        }}
+        aria-hidden="true"
+      />
+    ))}
+    {/* Glowing vertical timeline line */}
+    <div className="absolute left-1/2 top-35 bottom-10 transform -translate-x-1/2 w-1 bg-gradient-to-b from-yellow-400/60 via-blue-500/60 to-purple-600/60 blur-[2px] z-10 rounded-full" aria-hidden="true"></div>
     
     {/* Section Heading */}
     <motion.h2 
-      className="relative z-10 text-center text-4xl font-extrabold text-white mb-16 tracking-tight"
+      className="relative z-20 text-center text-4xl font-extrabold text-white mb-16 tracking-tight"
       initial={{ opacity: 0, y: -20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -85,7 +127,7 @@ const EducationTimeline = () => (
     </motion.h2>
     
     {/* Timeline Entries */}
-    <div className="relative z-10">
+    <div className="relative z-20">
       <TimelineEntry
         side="right"
         icon={<BuildingLibraryIcon className="w-8 h-8 text-yellow-400" />}

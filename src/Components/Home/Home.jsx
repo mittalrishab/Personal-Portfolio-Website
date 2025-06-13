@@ -2,15 +2,19 @@ import React from 'react';
 import avatarImg from '../../assets/avatarImage.png';
 import TextChange from '../TextChange';
 import AvailableForHire from '../AvailableForHire';
+import AnimatedBackground from '../AnimatedBackground'; // Import the animated background
 
 const Home = () => {
   return (
     <section
-      className="w-full pt-20 min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-10 px-6 py-16 md:px-20 bg-gradient-to-br from-[#1a2238] to-[#465697]"
+      className="relative w-full pt-20 min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-10 px-6 py-16 md:px-20 bg-gradient-to-br from-[#1a2238] to-[#465697] overflow-hidden"
       id="home"
     >
+      {/* Animated Background */}
+      <AnimatedBackground />
+
       {/* Left: Text Content */}
-      <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
+      <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left z-10">
         {/* Animated "Available for hire" badge */}
         <div className="mb-4">
           <AvailableForHire />
@@ -53,7 +57,7 @@ const Home = () => {
       </div>
 
       {/* Right: Avatar */}
-      <div className="flex-1 flex justify-center items-center">
+      <div className="flex-1 flex justify-center items-center z-10">
         <img
           src={avatarImg}
           alt="Portrait of Rishabh Mittal, Web Developer"

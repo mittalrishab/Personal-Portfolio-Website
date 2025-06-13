@@ -6,6 +6,31 @@ import utilityWebSuite from "../../assets/utilityWebSuite.png"
 import roadmapgen from "../../assets/roadmapgen.png"
 import snakegame from "../../assets/snakegame.jpg"
 
+// Add these styles in your global CSS (e.g., index.css or App.css)
+/*
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.08); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(40px) scale(1.13); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(0.95); }
+}
+.animated-bg-1 {
+  animation: float1 7s ease-in-out infinite;
+}
+.animated-bg-2 {
+  animation: float2 10s ease-in-out infinite;
+}
+.animated-bg-3 {
+  animation: float3 8s ease-in-out infinite;
+}
+*/
+
 const Projects = () => {
   const projects = [
     {
@@ -49,7 +74,21 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-10 px-6 md:px-12 lg:px-24 bg-[#171d32]">
+    <section id="projects" className="relative py-10 px-6 md:px-12 lg:px-24 bg-[#171d32] overflow-hidden">
+
+      {/* Animated Background Circles */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div
+          className="animated-bg-1 absolute top-10 left-10 w-56 h-56 bg-teal-400 opacity-20 rounded-full blur-2xl"
+        ></div>
+        <div
+          className="animated-bg-2 absolute bottom-20 right-16 w-72 h-72 bg-blue-400 opacity-20 rounded-full blur-2xl"
+        ></div>
+        <div
+          className="animated-bg-3 absolute top-1/2 left-1/3 w-40 h-40 bg-purple-400 opacity-20 rounded-full blur-2xl"
+        ></div>
+      </div>
+
       <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 text-center">
         Featured Projects
       </h2>

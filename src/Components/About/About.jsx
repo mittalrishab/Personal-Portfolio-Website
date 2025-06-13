@@ -38,10 +38,31 @@ const About = () => {
   return (
     <section
       id="skills"
-      className="bg-gradient-to-br mt-20 from-black via-gray-900 to-gray-800 py-16 px-4 md:px-8 rounded-xl shadow-2xl max-w-7xl mx-auto my-8"
+      className="relative bg-gradient-to-br mt-20 from-black via-gray-900 to-gray-800 py-16 px-4 md:px-8 rounded-xl shadow-2xl max-w-7xl mx-auto my-8 overflow-hidden"
       aria-label="Skills"
     >
-      <div className="flex flex-col lg:flex-row items-center gap-8 xl:gap-12">
+      {/* --- Animated Background Blobs --- */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <motion.div
+          className="absolute top-[-80px] left-[-80px] w-72 h-72 bg-purple-600 rounded-full filter blur-3xl opacity-30"
+          animate={{ x: [0, 40, 0], y: [0, 30, 0] }}
+          transition={{ duration: 8, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-[-60px] right-[-60px] w-64 h-64 bg-blue-500 rounded-full filter blur-2xl opacity-25"
+          animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
+          transition={{ duration: 10, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 w-96 h-96 bg-pink-500 rounded-full filter blur-3xl opacity-10"
+          style={{ transform: 'translate(-50%, -50%)' }}
+          animate={{ scale: [1, 1.1, 1], rotate: [0, 15, 0] }}
+          transition={{ duration: 12, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+        />
+      </div>
+      {/* --- End Animated Background --- */}
+
+      <div className="flex flex-col lg:flex-row items-center gap-8 xl:gap-12 relative z-10">
         {/* Image - Enhanced Responsiveness */}
         <motion.div 
           className="flex-shrink-0 w-full lg:w-2/5 xl:w-1/3 flex justify-center"
