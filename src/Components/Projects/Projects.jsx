@@ -5,6 +5,7 @@ import ToDoApp from "../../assets/ToDoApp.png"
 import utilityWebSuite from "../../assets/utilityWebSuite.png"
 import roadmapgen from "../../assets/roadmapgen.png"
 import snakegame from "../../assets/snakegame.jpg"
+import minesweeper from "../../assets/minesweeper.png"
 
 // Add these styles in your global CSS (e.g., index.css or App.css)
 /*
@@ -33,6 +34,14 @@ import snakegame from "../../assets/snakegame.jpg"
 
 const Projects = () => {
   const projects = [
+    {
+      title: "MineSweeper Game",
+      description: "A classic puzzle game where players uncover cells and avoid hidden mines using logic and numbers.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "https://minesweeper-rishabh.netlify.app/", 
+      codeLink: "https://github.com/mittalrishab/Minesweeper-Game", 
+      image: minesweeper 
+    },
     {
       title: "Gesture & Voice Controlled Snake Game",
       description: "A classic Snake game reimagined with voice commands and hand gesture controls using JavaScript.",
