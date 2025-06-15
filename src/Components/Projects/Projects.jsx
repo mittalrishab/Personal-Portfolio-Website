@@ -6,6 +6,7 @@ import utilityWebSuite from "../../assets/utilityWebSuite.png"
 import roadmapgen from "../../assets/roadmapgen.png"
 import snakegame from "../../assets/snakegame.jpg"
 import minesweeper from "../../assets/minesweeper.png"
+import tictactoe from "../../assets/tictactoe.png"
 
 // Add these styles in your global CSS (e.g., index.css or App.css)
 /*
@@ -34,6 +35,14 @@ import minesweeper from "../../assets/minesweeper.png"
 
 const Projects = () => {
   const projects = [
+    {
+      title: "Tic-Tac-Toe Game",
+      description: "A classic two-player strategy game where players take turns marking X or O in a 3×3 grid to get three in a row.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "https://tictactoe-rishabh.netlify.app/", 
+      codeLink: "https://github.com/mittalrishab/tic-tac-toe", 
+      image: tictactoe 
+    },
     {
       title: "MineSweeper Game",
       description: "A classic puzzle game where players uncover cells and avoid hidden mines using logic and numbers.",
