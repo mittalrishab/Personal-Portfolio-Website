@@ -147,7 +147,7 @@ const EducationTimeline = () => (
         title="Vellore Institute of Technology"
         subtitle="B.Tech, Computer Science & Engineering (Core) | 2023 – 2027"
         details={
-          <p><span className="font-semibold text-yellow-400">CGPA:</span> 9.004</p>
+          <p><span className="font-semibold text-yellow-400">CGPA:</span> 9.01</p>
         }
       />
     </div>
