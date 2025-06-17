@@ -25,26 +25,6 @@ const certificates = [
     ],
   },
   // Add more certificates here as needed
-  // Example second certificate:
-  /*
-  {
-    logo: udemyLogo,
-    certificateImg: certImg,
-    title: 'Advanced React Patterns',
-    organization: 'Udemy',
-    issueDate: 'July 2025',
-    credentialId: 'UC-xyz12345-1234-5678-abcd-1234567890',
-    credentialUrl: 'https://ude.my/UC-xyz12345-1234-5678-abcd-1234567890/',
-    description: "Mastered advanced React patterns including compound components, render props, and hooks.",
-    skills: [
-      'React',
-      'Hooks',
-      'Context API',
-      'Performance Optimization',
-      'State Management'
-    ],
-  },
-  */
 ];
 
 const CertificatesSection = () => {
@@ -118,20 +98,14 @@ const CertificatesSection = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <motion.div 
-            className="h-0.5 bg-teal-500"
-            variants={slideIn}
-          />
+          <motion.div className="h-0.5 bg-teal-500" variants={slideIn} />
           <motion.h2 
             className="text-3xl md:text-4xl font-bold text-white"
             variants={item}
           >
             Licenses & Certifications
           </motion.h2>
-          <motion.div 
-            className="h-0.5 bg-teal-500"
-            variants={slideIn}
-          />
+          <motion.div className="h-0.5 bg-teal-500" variants={slideIn} />
         </motion.div>
         <motion.p 
           className="text-gray-400 max-w-2xl mx-auto"
@@ -163,9 +137,11 @@ const CertificatesSection = () => {
       ) : (
         <>
           <motion.div 
-            className={`grid gap-6 ${showingCount === 1 ? 
-              'grid-cols-1 justify-center max-w-4xl mx-auto' : 
-              'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}
+            className={`grid gap-6 ${
+              showingCount === 1 
+                ? 'grid-cols-1 justify-center max-w-4xl mx-auto' 
+                : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+            }`}
             variants={container}
             initial="hidden"
             whileInView="show"
@@ -175,6 +151,7 @@ const CertificatesSection = () => {
               <motion.div 
                 key={`${cert.credentialId}-${idx}`}
                 variants={item}
+                viewport={{ once: true, margin: "-10px" }}
               >
                 <CertificateCard 
                   {...cert} 
@@ -192,17 +169,18 @@ const CertificatesSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <button
+              <motion.button
                 onClick={loadMore}
                 className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors border border-gray-700 flex items-center gap-2 mx-auto"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="Show more certificates"
               >
                 Show More Certificates
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </button>
+              </motion.button>
             </motion.div>
           )}
         </>

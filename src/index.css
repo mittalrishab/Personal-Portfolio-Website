@@ -101,3 +101,64 @@ a{
 .animated-bg-3 {
   animation: float3 8s ease-in-out infinite;
 }
+
+/* Add these animations */
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.08); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(40px) scale(1.13); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(0.95); }
+}
+
+.animated-bg-1 {
+  animation: float1 7s ease-in-out infinite;
+}
+.animated-bg-2 {
+  animation: float2 10s ease-in-out infinite;
+}
+.animated-bg-3 {
+  animation: float3 8s ease-in-out infinite;
+}
+
+/* Add AOS animations */
+[data-aos] {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+}
+
+[data-aos="fade-up"] {
+  transform: translateY(30px);
+  opacity: 0;
+}
+[data-aos="fade-down"] {
+  transform: translateY(-30px);
+  opacity: 0;
+}
+[data-aos="fade-right"] {
+  transform: translateX(-30px);
+  opacity: 0;
+}
+[data-aos="zoom-in"] {
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.aos-animate {
+  opacity: 1 !important;
+  transform: translate(0) scale(1) !important;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

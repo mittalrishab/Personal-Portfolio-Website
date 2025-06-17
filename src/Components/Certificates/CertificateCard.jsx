@@ -1,29 +1,28 @@
-// CertificateCard.js
-import React, { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
 const modalBackdrop = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1 }
+  visible: { opacity: 1 },
 };
 
 const modalContent = {
   hidden: { opacity: 0, scale: 0.96 },
-  visible: { opacity: 1, scale: 1 }
+  visible: { opacity: 1, scale: 1 },
 };
 
 const skillTag = {
   hidden: { opacity: 0, y: 10 },
-  visible: i => ({
+  visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.05 }
-  })
+    transition: { delay: i * 0.05 },
+  }),
 };
 
 const CertificateCard = ({
@@ -36,7 +35,7 @@ const CertificateCard = ({
   credentialUrl,
   description,
   skills = [],
-  isSingleCard
+  isSingleCard,
 }) => {
   const [showFullImage, setShowFullImage] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -50,11 +49,11 @@ const CertificateCard = ({
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       // Fallback for older browsers
-      const textArea = document.createElement('textarea');
+      const textArea = document.createElement("textarea");
       textArea.value = credentialId;
       document.body.appendChild(textArea);
       textArea.select();
-      document.execCommand('copy');
+      document.execCommand("copy");
       document.body.removeChild(textArea);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -79,20 +78,24 @@ const CertificateCard = ({
       initial="hidden"
       animate="visible"
       exit="hidden"
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-teal-500/20 hover:-translate-y-1 h-full flex flex-col group ${isSingleCard ? 'max-w-2xl' : ''}`}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-teal-500/20 hover:-translate-y-1 h-full flex flex-col group ${
+        isSingleCard ? "max-w-2xl" : ""
+      }`}
       aria-label={`Certificate: ${title} from ${organization}`}
     >
-      {/* Certificate Preview with animation */}
+      {/* Certificate Preview */}
       <motion.div
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.98 }}
-        className={`relative overflow-hidden cursor-pointer ${isSingleCard ? 'h-64' : 'h-52'}`}
+        className={`relative overflow-hidden cursor-pointer ${
+          isSingleCard ? "h-64" : "h-52"
+        }`}
         onClick={() => setShowFullImage(true)}
         aria-label={`View ${title} certificate`}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => e.key === 'Enter' && setShowFullImage(true)}
+        onKeyDown={(e) => e.key === "Enter" && setShowFullImage(true)}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 to-gray-900/80 z-10"></div>
         <motion.div
@@ -127,18 +130,20 @@ const CertificateCard = ({
               src={logo}
               alt={`${organization} logo`}
               className="h-10 w-10 object-contain"
-              onError={e => e.target.src = '/placeholder-logo.svg'}
+              onError={(e) => (e.target.src = "/placeholder-logo.svg")}
             />
           </motion.div>
           <div className="min-w-0">
-            <span className="text-teal-400 font-medium block truncate transition-colors hover:text-teal-300">{organization}</span>
+            <span className="text-teal-400 font-medium block truncate transition-colors hover:text-teal-300">
+              {organization}
+            </span>
             <div className="text-gray-400 text-sm flex items-center gap-1">
               <span>Issued {issueDate}</span>
               {credentialId && (
                 <>
                   <span className="mx-1">•</span>
                   <div className="relative group">
-                    <button 
+                    <button
                       onClick={copyToClipboard}
                       className="flex items-center text-left transition-transform active:scale-95"
                       aria-label="Copy credential ID"
@@ -146,8 +151,19 @@ const CertificateCard = ({
                       <span className="truncate max-w-[100px]">
                         ID: {credentialId.substring(0, 8)}...
                       </span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 opacity-70 transition-opacity group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 ml-1 opacity-70 transition-opacity group-hover:opacity-100"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                        />
                       </svg>
                     </button>
                     <AnimatePresence>
@@ -170,8 +186,10 @@ const CertificateCard = ({
             </div>
           </div>
         </div>
-        <h3 
-          className={`font-bold text-white mb-3 line-clamp-2 group-hover:text-teal-300 transition-colors duration-300 ${isSingleCard ? 'text-2xl' : 'text-xl'}`} 
+        <h3
+          className={`font-bold text-white mb-3 line-clamp-2 group-hover:text-teal-300 transition-colors duration-300 ${
+            isSingleCard ? "text-2xl" : "text-xl"
+          }`}
           title={title}
         >
           {title}
@@ -179,7 +197,7 @@ const CertificateCard = ({
         <p className="text-gray-300 mb-5 line-clamp-3 transition-colors group-hover:text-gray-200">
           {description}
         </p>
-        {/* Skills Tags with staggered animation */}
+        {/* Skills Tags */}
         <div className="mt-auto">
           <div className="flex flex-wrap gap-2 mb-4">
             {displaySkills.map((skill, index) => (
@@ -189,7 +207,10 @@ const CertificateCard = ({
                 variants={skillTag}
                 initial="hidden"
                 animate="visible"
-                whileHover={{ scale: 1.08, backgroundColor: 'rgba(13, 148, 136, 0.5)' }}
+                whileHover={{
+                  scale: 1.08,
+                  backgroundColor: "rgba(13, 148, 136, 0.5)",
+                }}
                 className="px-3 py-1 bg-gray-700/60 text-gray-200 text-xs rounded-full truncate transition-all duration-300 cursor-pointer"
                 title={skill}
               >
@@ -204,20 +225,36 @@ const CertificateCard = ({
           </div>
           <div className="flex gap-3">
             <motion.button
-              whileHover={{ scale: 1.04, backgroundColor: 'rgb(31 41 55)' }}
+              whileHover={{ scale: 1.04, backgroundColor: "rgb(31 41 55)" }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setShowFullImage(true)}
               className={`py-2.5 rounded-lg bg-gray-700 hover:bg-gray-600 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2 flex-1 hover:-translate-y-0.5 active:translate-y-0`}
               aria-label="Preview certificate"
             >
               Preview
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 transition-transform group-hover:scale-110"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
               </svg>
             </motion.button>
             <motion.a
-              whileHover={{ scale: 1.04, backgroundColor: 'rgb(13 148 136)' }}
+              whileHover={{ scale: 1.04, backgroundColor: "rgb(13 148 136)" }}
               whileTap={{ scale: 0.98 }}
               href={credentialUrl}
               target="_blank"
@@ -226,19 +263,24 @@ const CertificateCard = ({
               aria-label="Verify credential"
             >
               Verify
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 transition-all duration-300 group-hover/credential:translate-x-1"
-                viewBox="0 0 20 20" 
+                viewBox="0 0 20 20"
                 fill="currentColor"
               >
-                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
               </svg>
             </motion.a>
           </div>
         </div>
       </div>
-      {/* Full Image Modal with animations */}
+
+      {/* Full Image Modal */}
       <AnimatePresence>
         {showFullImage && (
           <motion.div
@@ -260,18 +302,29 @@ const CertificateCard = ({
               exit="hidden"
               transition={{ duration: 0.25 }}
               className="relative max-w-4xl w-full bg-gray-800 rounded-xl overflow-hidden shadow-2xl"
-              onClick={e => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
             >
               <div className="absolute top-4 right-4 flex gap-2">
                 <a
                   href={certificateImg}
-                  download={`${title.replace(/\s+/g, '_')}_certificate.jpg`}
+                  download={`${title.replace(/\s+/g, "_")}_certificate.jpg`}
                   className="text-white bg-gray-700 hover:bg-gray-600 rounded-lg p-2 z-10 transition-all duration-300 flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0"
                   aria-label="Download certificate"
                   onClick={handleDownload}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 transition-transform hover:scale-110"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    />
                   </svg>
                 </a>
                 <button
@@ -279,8 +332,19 @@ const CertificateCard = ({
                   onClick={() => setShowFullImage(false)}
                   aria-label="Close preview"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 transition-transform hover:scale-110"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               </div>
@@ -298,7 +362,9 @@ const CertificateCard = ({
                 <motion.img
                   src={certificateImg}
                   alt={`Full size ${title} certificate`}
-                  className={`w-full max-h-[80vh] object-contain rounded-lg border border-gray-700 transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  className={`w-full max-h-[80vh] object-contain rounded-lg border border-gray-700 transition-opacity duration-500 ${
+                    imageLoaded ? "opacity-100" : "opacity-0"
+                  }`}
                   onLoad={() => setImageLoaded(true)}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: imageLoaded ? 1 : 0 }}
@@ -312,8 +378,12 @@ const CertificateCard = ({
                 transition={{ duration: 0.3 }}
                 className="px-6 py-4 bg-gray-900/80 border-t border-gray-700"
               >
-                <h3 className="text-lg font-bold text-white truncate">{title}</h3>
-                <div className="text-sm text-gray-400 mt-1">{organization} • Issued {issueDate}</div>
+                <h3 className="text-lg font-bold text-white truncate">
+                  {title}
+                </h3>
+                <div className="text-sm text-gray-400 mt-1">
+                  {organization} • Issued {issueDate}
+                </div>
               </motion.div>
             </motion.div>
           </motion.div>
