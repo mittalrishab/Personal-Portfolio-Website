@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import CertificateCard from './CertificateCard';
 import udemyLogo from '../../assets/udemyLogo.png';
 import certImg from '../../assets/UdemyCertificate.jpg';
 
+// Updated with unique certificates
 const certificates = [
   {
     logo: udemyLogo,
@@ -11,32 +12,15 @@ const certificates = [
     title: 'The Complete Full-Stack Web Development Bootcamp',
     organization: 'Udemy',
     issueDate: 'June 2025',
-    credentialId: 'UC-ac14249e-5f35-41db-afd8-158f9961d304',
-    credentialUrl: 'https://ude.my/UC-ac14249e-5f35-41db-afd8-158f9961d304/',
-    description: "I've completed The Complete Full-Stack Web Development Bootcamp by Dr. Angela Yu. Gained hands-on experience with HTML, CSS, JavaScript, Node.js, Express, MongoDB, and React.",
-    skills: [
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-      'Node.js',
-      'Express',
-      'MongoDB',
-      'React'
-    ],
-  },
-  // Add more certificates here as needed
+    credentialId: 'UC-ac14249e-5f35-41db-afd8-158f9961d301',
+    credentialUrl: 'https://ude.my/UC-ac14249e-5f35-41db-afd8-158f9961d301/',
+    description: "Comprehensive training in modern web development technologies and methodologies.",
+    skills: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'React'],
+  }, 
+  
 ];
 
 const CertificatesSection = () => {
-  const [visibleCertificates, setVisibleCertificates] = useState(3);
-  
-  const loadMore = () => {
-    setVisibleCertificates(prev => prev + 3);
-  };
-
-  const showingCertificates = certificates.slice(0, visibleCertificates);
-  const showingCount = showingCertificates.length;
-
   // Animation variants
   const container = {
     hidden: { opacity: 0 },
@@ -80,6 +64,19 @@ const CertificatesSection = () => {
     }
   };
 
+  // Function to determine grid column classes based on certificate count
+  const getGridClasses = () => {
+    const count = certificates.length;
+    
+    if (count === 1) return 'grid-cols-1 max-w-4xl mx-auto';
+    if (count === 2) return 'grid-cols-1 md:grid-cols-2';
+    if (count === 3 || count === 6) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+    if (count === 4) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4';
+    if (count === 5) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5';
+    
+    return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+  };
+
   return (
     <motion.section
       id="certificates"
@@ -115,11 +112,11 @@ const CertificatesSection = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          Validated credentials demonstrating my expertise in various technologies and methodologies
+          Validated credentials demonstrating expertise in various technologies
         </motion.p>
       </div>
       
-      {showingCount === 0 ? (
+      {certificates.length === 0 ? (
         <motion.div 
           className="text-center py-12"
           variants={fadeIn}
@@ -135,55 +132,26 @@ const CertificatesSection = () => {
           </div>
         </motion.div>
       ) : (
-        <>
-          <motion.div 
-            className={`grid gap-6 ${
-              showingCount === 1 
-                ? 'grid-cols-1 justify-center max-w-4xl mx-auto' 
-                : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-            }`}
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            {showingCertificates.map((cert, idx) => (
-              <motion.div 
-                key={`${cert.credentialId}-${idx}`}
-                variants={item}
-                viewport={{ once: true, margin: "-10px" }}
-              >
-                <CertificateCard 
-                  {...cert} 
-                  isSingleCard={showingCount === 1}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-          
-          {visibleCertificates < certificates.length && (
+        <motion.div 
+          className={`grid gap-6 ${getGridClasses()}`}
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {certificates.map((cert) => (
             <motion.div 
-              className="text-center mt-10"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.5 }}
+              key={cert.credentialId}
+              variants={item}
+              viewport={{ once: true, margin: "-10px" }}
             >
-              <motion.button
-                onClick={loadMore}
-                className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors border border-gray-700 flex items-center gap-2 mx-auto"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Show more certificates"
-              >
-                Show More Certificates
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </motion.button>
+              <CertificateCard 
+                {...cert} 
+                isSingleCard={certificates.length === 1}
+              />
             </motion.div>
-          )}
-        </>
+          ))}
+        </motion.div>
       )}
     </motion.section>
   );
