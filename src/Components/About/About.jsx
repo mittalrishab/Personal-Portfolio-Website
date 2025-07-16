@@ -8,14 +8,14 @@ const skillsData = [
     title: 'Frontend',
     iconColor: 'text-blue-400',
     skills: [
-      'HTML5', 'CSS3', 'JavaScript (ES6+)', 'React',  'Tailwind CSS', 'BootStrap'
+      'HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Tailwind CSS', 'BootStrap'
     ]
   },
   {
     title: 'Backend',
     iconColor: 'text-green-400',
     skills: [
-      'Node.js', 'Express', 'REST APIs', 'MongoDB', 'JWT', 'Bcrypt' 
+      'Node.js', 'Express', 'REST APIs', 'MongoDB', 'JWT', 'Bcrypt'
     ]
   },
   {
@@ -64,7 +64,7 @@ const About = () => {
 
       <div className="flex flex-col lg:flex-row items-center gap-8 xl:gap-12 relative z-10">
         {/* Image - Enhanced Responsiveness */}
-        <motion.div 
+        <motion.div
           className="flex-shrink-0 w-full lg:w-2/5 xl:w-1/3 flex justify-center"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -82,7 +82,7 @@ const About = () => {
         </motion.div>
 
         {/* Skills */}
-        <motion.div 
+        <motion.div
           className="w-full lg:w-3/5 xl:w-2/3"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ const About = () => {
           <p className="text-gray-300 mb-8 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
             As a passionate full-stack developer, I create robust, scalable web applications with intuitive user experiences. Here's my technical toolkit:
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {skillsData.map((group, idx) => (
               <motion.div
@@ -125,18 +125,29 @@ const About = () => {
               </motion.div>
             ))}
           </div>
-          
+
           {/* Progress Indicator */}
           <div className="mt-10 flex flex-wrap gap-4 items-center justify-center lg:justify-start">
             <div className="flex items-center">
-              <div className="w-3 h-3 bg-purple-500 rounded-full mr-2 animate-pulse"></div>
-              <span className="text-sm text-gray-300">Currently learning: Data Science, AI/ML</span>
+              <div className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+              <span className="text-sm text-gray-300">
+                Web Development: <span className="font-semibold text-white">Completed</span>
+              </span>
             </div>
             <div className="flex items-center">
-              <div className="w-3 h-3 bg-blue-500 rounded-full mr-2 animate-pulse"></div>
-              <span className="text-sm text-gray-300">Next goal: IBM Devops Certification</span>
+              <div className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+              <span className="text-sm text-gray-300">
+                IBM DevOps Certification: <span className="font-semibold text-white">Achieved</span>
+              </span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-purple-500 rounded-full mr-2 animate-pulse"></div>
+              <span className="text-sm text-gray-300">
+                Next step: <span className="font-semibold text-white">Learning Data Science & AI/ML</span>
+              </span>
             </div>
           </div>
+
         </motion.div>
       </div>
     </section>

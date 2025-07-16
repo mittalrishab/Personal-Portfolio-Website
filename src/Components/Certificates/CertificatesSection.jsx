@@ -1,12 +1,14 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import CertificateCard from './CertificateCard';
+
+// Import logos
 import udemyLogo from '../../assets/udemyLogo.png';
 import ibmLogo from '../../assets/ibmLogo.png';
 import certImg from '../../assets/UdemyCertificate.jpg';
-import devopsfundamentalsCertificate from '../../assets/devopsfundamentalsCertificate.png'
-import devopsdesignCertificate from '../../assets/devopsdesignCertificate.png'
-// Updated with unique certificates
+import devopsfundamentalsCertificate from '../../assets/devopsfundamentalsCertificate.png';
+import devopsdesignCertificate from '../../assets/devopsdesignCertificate.png';
+
 const certificates = [
   {
     logo: udemyLogo,
@@ -42,28 +44,32 @@ const certificates = [
     skills: ['DevOps', 'Agile', 'Design Thinking', 'Software Development Methodologies', 'Team Collaboration'],
   },
 
-];
+]
 
 const CertificatesSection = () => {
+  const [activeFilter, setActiveFilter] = useState('all');
+  
   // Animation variants
   const container = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   };
 
   const item = {
     hidden: { opacity: 0, y: 30 },
-    show: {
-      opacity: 1,
+    show: { 
+      opacity: 1, 
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
+      transition: { 
+        type: "spring", 
+        damping: 15, 
+        stiffness: 200 
       }
     }
   };
@@ -72,64 +78,73 @@ const CertificatesSection = () => {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { duration: 0.8 }
+      transition: { 
+        duration: 0.8, 
+        ease: "easeOut" 
+      }
     }
   };
 
   const slideIn = {
     hidden: { width: 0, opacity: 0 },
     show: {
-      width: "2.5rem",
+      width: "3rem",
       opacity: 1,
       transition: {
-        duration: 0.5,
-        delay: 0.3
+        duration: 0.6,
+        ease: "easeOut"
       }
     }
   };
 
-  // Function to determine grid column classes based on certificate count
-  const getGridClasses = () => {
-    const count = certificates.length;
+  // Filter certificates by organization
+  const filteredCertificates = activeFilter === 'all' 
+    ? certificates 
+    : certificates.filter(cert => cert.organization.toLowerCase() === activeFilter);
 
-    if (count === 1) return 'grid-cols-1 max-w-4xl mx-auto';
-    if (count === 2) return 'grid-cols-1 md:grid-cols-2';
-    if (count === 3 || count === 6) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
-    if (count === 4) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4';
-    if (count === 5) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5';
-
-    return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
-  };
+  // Get unique organizations for filter
+  const organizations = [...new Set(certificates.map(cert => cert.organization))];
 
   return (
     <motion.section
       id="certificates"
-      className="bg-gray-900 py-16 px-4 md:px-8 rounded-xl max-w-6xl mx-auto my-12"
-      aria-label="Certificates"
+      className="bg-gradient-to-br from-gray-900 to-gray-800 py-16 px-4 md:px-8 rounded-2xl max-w-6xl mx-auto my-12 shadow-2xl shadow-gray-950/50"
+      aria-label="Licenses & Certifications"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.7 }}
+      transition={{ 
+        duration: 0.7, 
+        type: "spring", 
+        damping: 20 
+      }}
     >
       <div className="text-center mb-12">
         <motion.div
-          className="inline-flex items-center justify-center gap-3 mb-4"
+          className="inline-flex items-center justify-center gap-4 mb-6"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
-          <motion.div className="h-0.5 bg-teal-500" variants={slideIn} />
+          <motion.div 
+            className="h-1 bg-gradient-to-r from-teal-500 to-emerald-400 rounded-full" 
+            variants={slideIn} 
+          />
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white"
+            className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-emerald-200"
             variants={item}
           >
             Licenses & Certifications
           </motion.h2>
-          <motion.div className="h-0.5 bg-teal-500" variants={slideIn} />
+          <motion.div 
+            className="h-1 bg-gradient-to-l from-teal-500 to-emerald-400 rounded-full" 
+            variants={slideIn} 
+          />
         </motion.div>
+        
         <motion.p
-          className="text-gray-400 max-w-2xl mx-auto"
+          className="text-gray-300 max-w-2xl mx-auto text-lg md:text-xl"
           variants={fadeIn}
           initial="hidden"
           whileInView="show"
@@ -140,7 +155,46 @@ const CertificatesSection = () => {
         </motion.p>
       </div>
 
-      {certificates.length === 0 ? (
+      {/* Filter Controls */}
+      <motion.div 
+        className="flex flex-wrap justify-center gap-3 mb-10"
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        <button
+          onClick={() => setActiveFilter('all')}
+          className={`px-4 py-2 rounded-full transition-all ${
+            activeFilter === 'all'
+              ? 'bg-gradient-to-r from-teal-600 to-emerald-500 text-white shadow-lg shadow-teal-500/20'
+              : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+          }`}
+        >
+          All Certificates
+        </button>
+        
+        {organizations.map(org => (
+          <button
+            key={org}
+            onClick={() => setActiveFilter(org.toLowerCase())}
+            className={`px-4 py-2 rounded-full transition-all flex items-center gap-2 ${
+              activeFilter === org.toLowerCase()
+                ? 'bg-gradient-to-r from-teal-600 to-emerald-500 text-white shadow-lg shadow-teal-500/20'
+                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+            }`}
+          >
+            <img 
+              src={org === 'Udemy' ? udemyLogo : ibmLogo} 
+              alt={`${org} logo`} 
+              className="w-5 h-5 object-contain" 
+            />
+            {org}
+          </button>
+        ))}
+      </motion.div>
+
+      {filteredCertificates.length === 0 ? (
         <motion.div
           className="text-center py-12"
           variants={fadeIn}
@@ -148,33 +202,40 @@ const CertificatesSection = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <div className="bg-gray-800/50 p-8 rounded-xl max-w-md mx-auto">
-            <h3 className="text-xl text-teal-400 font-medium mb-2">No Certificates Yet</h3>
-            <p className="text-gray-400">
-              Certificates will appear here once added
+          <div className="bg-gray-800/50 p-10 rounded-xl max-w-md mx-auto border border-gray-700">
+            <h3 className="text-2xl text-teal-400 font-medium mb-3">No Certificates Found</h3>
+            <p className="text-gray-300 text-lg">
+              Try selecting a different filter
             </p>
           </div>
         </motion.div>
       ) : (
         <motion.div
-          className={`grid gap-6 ${getGridClasses()}`}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {certificates.map((cert) => (
-            <motion.div
-              key={cert.credentialId}
-              variants={item}
-              viewport={{ once: true, margin: "-10px" }}
-            >
-              <CertificateCard
-                {...cert}
-                isSingleCard={certificates.length === 1}
-              />
-            </motion.div>
-          ))}
+          <AnimatePresence>
+            {filteredCertificates.map((cert) => (
+              <motion.div
+                key={cert.credentialId}
+                variants={item}
+                layout
+                initial="hidden"
+                animate="show"
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                viewport={{ once: true, margin: "-10px" }}
+              >
+                <CertificateCard
+                  {...cert}
+                  isSingleCard={filteredCertificates.length === 1}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
       )}
     </motion.section>
