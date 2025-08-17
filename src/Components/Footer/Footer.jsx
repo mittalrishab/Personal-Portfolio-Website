@@ -2,15 +2,20 @@ import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { MdOutlineEmail, MdCode } from 'react-icons/md';
 import { CiLinkedin } from 'react-icons/ci';
-import { FaGithub } from 'react-icons/fa6';
+import { FaGithub, FaWhatsapp } from 'react-icons/fa6'; // Added FaWhatsapp
 import { SiGeeksforgeeks } from 'react-icons/si';
-import MonkeytypeIcon from '../MonkeytypeIcon.jsx'; // Make sure this exists
+import MonkeytypeIcon from '../MonkeytypeIcon.jsx';
 
 const socialLinks = [
   {
     icon: <MdOutlineEmail size={28} aria-label="Email" />,
     text: 'mittal.rishabh0305@gmail.com',
     href: 'mailto:mittal.rishabh0305@gmail.com',
+  },
+  {
+    icon: <FaWhatsapp size={28} aria-label="WhatsApp" />, // New WhatsApp entry
+    text: 'WhatsApp',
+    href: 'https://wa.me/919560072050',
   },
   {
     icon: <CiLinkedin size={28} aria-label="LinkedIn" />,
@@ -134,10 +139,8 @@ const Footer = () => (
     style={{
       background:
         'linear-gradient(to bottom, rgba(16,23,38,0.7) 0%, #101726 60%, #0b1120 100%)',
-      // Match this to your main background for smoothness
     }}
   >
-    {/* Blurred Top Overlay for Smooth Transition */}
     <div
       aria-hidden="true"
       className="absolute -top-8 left-0 w-full h-16 pointer-events-none z-20"
@@ -148,7 +151,6 @@ const Footer = () => (
       }}
     />
 
-    {/* Glowing stars */}
     <GlowingStars count={40} />
 
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -175,7 +177,7 @@ const Footer = () => (
 
         <nav aria-label="Social links" className="w-full md:w-auto">
           <motion.ul
-            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" // Updated for better responsiveness
             variants={container}
             initial="hidden"
             whileInView="show"
