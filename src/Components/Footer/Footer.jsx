@@ -2,18 +2,18 @@ import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { MdOutlineEmail, MdCode } from 'react-icons/md';
 import { CiLinkedin } from 'react-icons/ci';
-import { FaGithub, FaWhatsapp } from 'react-icons/fa6'; // Added FaWhatsapp
+import { FaGithub, FaWhatsapp } from 'react-icons/fa6';
 import { SiGeeksforgeeks } from 'react-icons/si';
 import MonkeytypeIcon from '../MonkeytypeIcon.jsx';
 
 const socialLinks = [
   {
     icon: <MdOutlineEmail size={28} aria-label="Email" />,
-    text: 'mittal.rishabh0305@gmail.com',
+    text: 'Email',
     href: 'mailto:mittal.rishabh0305@gmail.com',
   },
   {
-    icon: <FaWhatsapp size={28} aria-label="WhatsApp" />, // New WhatsApp entry
+    icon: <FaWhatsapp size={28} aria-label="WhatsApp" />,
     text: 'WhatsApp',
     href: 'https://wa.me/919560072050',
   },
@@ -69,6 +69,7 @@ const GlowingStars = React.memo(({ count = 30 }) => {
         const left = Math.random() * 100;
         const size = Math.random() * 2 + 1;
         const duration = Math.random() * 2 + 1.5;
+        const delay = Math.random() * 2;
         return (
           <div
             key={i}
@@ -82,7 +83,7 @@ const GlowingStars = React.memo(({ count = 30 }) => {
               borderRadius: '50%',
               background: 'radial-gradient(white, transparent 70%)',
               opacity: 0.9,
-              animation: `star-glow ${duration}s infinite alternate`,
+              animation: `star-glow ${duration}s ${delay}s infinite alternate ease-in-out`,
               pointerEvents: 'none',
               zIndex: 1,
             }}
@@ -104,12 +105,13 @@ const SocialLinkItem = ({ icon, text, href }) => (
       transition: { duration: 0.2 },
     }}
     whileTap={{ scale: 0.95 }}
+    className="w-full"
   >
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-3 p-3 rounded-lg bg-white/5 backdrop-blur-sm transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-[#A3BFFA]"
+      className="flex items-center gap-3 p-4 rounded-lg bg-white/5 backdrop-blur-sm transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-[#A3BFFA] hover:bg-white/10"
       tabIndex={0}
       aria-label={text}
     >
@@ -120,7 +122,7 @@ const SocialLinkItem = ({ icon, text, href }) => (
       >
         {icon}
       </motion.span>
-      <span className="text-white/90 group-hover:text-white font-medium">
+      <span className="text-white/90 group-hover:text-white font-medium truncate">
         {text}
       </span>
     </a>
@@ -141,6 +143,21 @@ const Footer = () => (
         'linear-gradient(to bottom, rgba(16,23,38,0.7) 0%, #101726 60%, #0b1120 100%)',
     }}
   >
+    <style>
+      {`
+        @keyframes star-glow {
+          0% { opacity: 0.3; }
+          100% { opacity: 0.9; }
+        }
+        
+        @media (max-width: 640px) {
+          .social-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}
+    </style>
+    
     <div
       aria-hidden="true"
       className="absolute -top-8 left-0 w-full h-16 pointer-events-none z-20"
@@ -158,26 +175,26 @@ const Footer = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="flex flex-col md:flex-row justify-between items-center gap-8"
+        className="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-16"
       >
         <motion.div
-          className="text-center md:text-left space-y-4"
+          className="text-center lg:text-left space-y-4 max-w-lg"
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-[#A3BFFA] drop-shadow">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-[#A3BFFA] drop-shadow">
             Let's Collaborate
           </h1>
-          <p className="text-xl text-white/90">
+          <p className="text-lg sm:text-xl text-white/90">
             Got a challenge? Let's solve it together!
           </p>
         </motion.div>
 
-        <nav aria-label="Social links" className="w-full md:w-auto">
+        <nav aria-label="Social links" className="w-full lg:w-auto">
           <motion.ul
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" // Updated for better responsiveness
+            className="grid social-grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto lg:mx-0"
             variants={container}
             initial="hidden"
             whileInView="show"
@@ -197,7 +214,7 @@ const Footer = () => (
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.5 }}
       >
-        <p className="text-white/80">
+        <p className="text-white/80 text-sm sm:text-base">
           © {new Date().getFullYear()} Rishabh Mittal. Code with <span aria-label="love" role="img">❤️</span>
         </p>
       </motion.div>
